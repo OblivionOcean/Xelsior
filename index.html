@@ -5,7 +5,10 @@
 </head>
 <body style="margin: 0;width: 100%;height: 100%;">
 <script src="./lute.min.js"></script>
+<script src="./mermaid.min.js"></script>
+<script src="./xss.js"></script>
 <script>
+    mermaid.initialize({ startOnLoad: true });
     const lute = Lute.New();
     const html2MdRenderer = {
         renderLinkDest: function (node, entering) {
@@ -36,8 +39,15 @@
         console.log(result)
         document.getElementById('md-output').innerHTML = result;
         hljs.highlightAll();
+        for (var i=0; i<document.getElementsByClassName("language-mermai").length; i++){
+            document.getElementsByClassName("language-mermai")[i].classList.add('mermai');
+        }
+        mermaid.initialize({ startOnLoad: true });
         console.log(lute.HTML2Md(result));
         console.log(lute.RenderJSON(it.value));
+    }
+    function outMarkdown(it) {
+        it.innerHTML = filterXSS(it.innerHTML);
     }
 </script>
 <link rel="stylesheet"
@@ -46,7 +56,7 @@
 <div style="width: 100%;height: 100%;">
     <div class="md-pre" style="display: flex;height: 100%;">
         <pre class="md-input" placeholder="" contenteditable="true" spellcheck="false"
-             style="background-color: #f1f3f5;" oninput="onMarkdown(this)"></pre>
+             style="background-color: #f1f3f5;" oninput="onMarkdown(this)" onpaste="outMarkdown(this)"></pre>
         <pre class="md-output" id="md-output" placeholder="" spellcheck="false"
              style="background-color: #fafafa;"></pre>
     </div>
@@ -64,6 +74,28 @@
         height: 100%;
     }
 
+    ::-webkit-scrollbar
+    {
+        width:8px;
+        height:8px;
+        background-color:#F5F5F5;
+    }
+
+    ::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius:10px;
+        background-color:#F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb
+    {
+        border-radius:10px;
+        -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+        background-color:#555;
+    }
+
+
     .md-input:focus {
         outline: 0;
         background-color: #fafbfc !important;
@@ -72,18 +104,22 @@
     .md-input, .md-output {
         font-size: 1rem;
         font-weight: 300;
-        line-height: 1.7;
+        line-height: 1.5;
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        word-wrap: break-word;
+        overflow-x: auto;
         margin: 0;
         padding: 10px;
         padding-top: 50px !important;
-        height: 100%;
-        border: 1px solid #d1d5da;
+        height: calc(100% - 62px);
         max-width: 100%;
+        border: 1px solid #ccc;
         width: 50%;
         white-space: pre-wrap;
         word-wrap: break-word;
+    }
+
+    .vditor-task{
+        list-style: none;
     }
 
     code {
