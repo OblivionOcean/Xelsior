@@ -143,7 +143,8 @@
 <link rel="stylesheet"
       href="./default.min.css">
 <script src="./highlight.min.js"></script>
-<div style="width: 100%;height: 100%;">
+<script src="./emoji.js"></script>
+<div id="main" style="width: 100%;height: 100%;">
     <div class="md-pre" style="display: flex;height: 100%;">
         <textarea class="md-input" placeholder="" contenteditable="true" spellcheck="false"
              style="background-color: #f1f3f5;" oninput="onMarkdown(this)"></textarea>
@@ -351,12 +352,62 @@
         border-radius: 5px;
         color: #545454;
     }
+    em-emoji-picker {
+        display: flex;
+        position: fixed;
+        top: 55px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 9999999999999999;
+    }
 </style>
 <script>
+    const pickerOptions = { onEmojiSelect:function(n) {
+            let HTML = document.getElementsByClassName("md-input")[0].value;
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + n.shortcodes + HTML.substring(posCursor().end);
+            document.getElementsByClassName("emojis-icon")[0].onclick()
+            onMarkdown(document.getElementsByClassName("md-input")[0])
+        } , i18n: {
+            "search": "搜索",
+            "search_no_results_1": "哦不！",
+            "search_no_results_2": "没有找到相关表情",
+            "pick": "选择一个表情…",
+            "add_custom": "添加自定义表情",
+            "categories": {
+                "activity": "活动",
+                "custom": "自定义",
+                "flags": "旗帜",
+                "foods": "食物与饮品",
+                "frequent": "最近使用",
+                "nature": "动物与自然",
+                "objects": "物品",
+                "people": "表情与角色",
+                "places": "旅行与景点",
+                "search": "搜索结果",
+                "symbols": "符号"
+            },
+            "skins": {
+                "choose": "选择默认肤色",
+                "1": "默认",
+                "2": "白色",
+                "3": "偏白",
+                "4": "中等",
+                "5": "偏黑",
+                "6": "黑色"
+            }
+        }}
+    const picker = new EmojiMart.Picker(pickerOptions)
+    document.getElementById('main').append(picker)
+    document.getElementsByTagName('em-emoji-picker')[0].style.display = "none";
     document.getElementsByClassName("md-h")[0].style.display = "none";
+    document.getElementsByClassName("emojis-icon")[0].onclick = function () {
+        if (document.getElementsByTagName('em-emoji-picker')[0].style.display === "none") {
+            document.getElementsByTagName('em-emoji-picker')[0].style.display = "flex";
+        } else {
+            document.getElementsByTagName('em-emoji-picker')[0].style.display = "none";
+        }
+    } //表情菜单
     document.getElementsByClassName("fout-size")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
         if (document.getElementsByClassName("md-h")[0].style.display === "none") {
             document.getElementsByClassName("md-h")[0].style.display = "flex";
         } else {
@@ -364,48 +415,42 @@
         }
     } //字体菜单
     document.getElementsByClassName("button-h1")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n# ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h1
     document.getElementsByClassName("button-h2")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n## ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h2
     document.getElementsByClassName("button-h3")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h3
     document.getElementsByClassName("button-h4")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n#### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h4
     document.getElementsByClassName("button-h5")[0].onclick = function () {
-        const result = lute.MarkdownStr("", document.getElementById("md-output").innerText);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n##### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h5
     document.getElementsByClassName("button-h6")[0].onclick = function () {
-        let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
-        let HTML = lute.HTML2Md(result)
+        let HTML = document.getElementsByClassName("md-input")[0].value;
         if (posCursor().start === posCursor().end) {
             document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n###### ' + HTML.substring(posCursor().end);
         }

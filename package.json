@@ -18,8 +18,5 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^20.0.3"
-  },
-  "dependencies": {
-    "cnpm": "^8.3.0"
   }
 }
