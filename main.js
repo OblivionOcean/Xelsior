@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, ipcMain} = require('electron')
 const path = require('path')
 
 function createWindow () {
@@ -11,6 +11,17 @@ function createWindow () {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   Menu.setApplicationMenu(null);
   //mainWindow.webContents.openDevTools()
+  var Fpath = 'new'
+  if (process.argv[0].indexOf('electron')>-1) {
+    if (process.argv.length>=3) {
+      var Fpath = process.argv[process.argv.length-1];
+    }
+  } else {
+    if (process.argv.length>=2) {
+      var Fpath = process.argv[process.argv.length-1];
+    }
+  }
+  console.log(Fpath)
 }
 app.whenReady().then(() => {
   createWindow()
