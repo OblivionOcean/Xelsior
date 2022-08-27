@@ -366,48 +366,48 @@
     document.getElementsByClassName("button-h1")[0].onclick = function () {
         let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset) + '# ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n# ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h1
     document.getElementsByClassName("button-h2")[0].onclick = function () {
         let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset) + '## ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n## ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h2
     document.getElementsByClassName("button-h3")[0].onclick = function () {
         let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset ) + '### ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h3
     document.getElementsByClassName("button-h4")[0].onclick = function () {
         let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset ) + '#### ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n#### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h4
     document.getElementsByClassName("button-h5")[0].onclick = function () {
         const result = lute.MarkdownStr("", document.getElementById("md-output").innerText);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset ) + '##### ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n##### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h5
     document.getElementsByClassName("button-h6")[0].onclick = function () {
         let result = lute.MarkdownStr("", document.getElementById("md-output").innerHTML);
         let HTML = lute.HTML2Md(result)
-        if (window.getSelection().getRangeAt(0).startOffset === window.getSelection().getRangeAt(0).endOffset) {
-            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, window.getSelection().getRangeAt(0).startOffset ) + '###### ' + HTML.substring(window.getSelection().getRangeAt(0).endOffset);
+        if (posCursor().start === posCursor().end) {
+            document.getElementsByClassName("md-input")[0].value = HTML.substring(0, posCursor().start) + '\n###### ' + HTML.substring(posCursor().end);
         }
         onMarkdown(document.getElementsByClassName("md-input")[0])
     } //h6
