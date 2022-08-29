@@ -34,6 +34,7 @@ function onMarkdown(it) {
         document.getElementsByClassName("language-mermai")[i].classList.add('mermai');
     }
     mermaid.initialize({startOnLoad: true});
+    ipcRenderer.send('init-file-save', document.getElementsByClassName("md-input")[0].value);
     console.log(result, lute.HTML2Md(result), lute.RenderJSON(it.value))
 }
 //获取光标
@@ -314,9 +315,18 @@ function openmd() {
     ipcRenderer.send('file-open');
 }
 
+function savemd() {
+    //保存文件
+    ipcRenderer.send('file-save', document.getElementsByClassName("md-input")[0].value);
+}
+
 ipcRenderer.send('init-file-open');
 
 ipcRenderer.on('file-return', function (event, arg) {
     document.getElementsByClassName("md-input")[0].value=arg;
     onMarkdown(document.getElementsByClassName("md-input")[0]);
+})
+
+ipcRenderer.on('error', function (event, arg) {
+    alert(arg);
 })

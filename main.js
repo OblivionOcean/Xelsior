@@ -19,6 +19,7 @@ function createWindow() {
             nodeIntegration: true, contextIsolation: false,
         }
     });
+    var Fpath = 'new'
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     Menu.setApplicationMenu(null);
     //mainWindow.webContents.openDevTools()
@@ -40,30 +41,68 @@ function createWindow() {
             mainWindow.maximize();
         }
     })
-//接收关闭命令
+    //接收关闭命令
     ipcMain.on('window-close', function () {
         mainWindow.close();
     })
     //打开文件
     ipcMain.on('file-open', function (event, arg) {
+        console.log(Fpath)
         dialog.showOpenDialog({
             multiSelections: false,
             openDirectory: false,
             title: '选择文件',
             filters: [{name: 'Markdown文件', extensions: ['md', 'markdown']}, {
-                name: 'Markdown格式的文本',
-                extensions: ['txt']
+                name: 'Markdown格式的文本', extensions: ['txt']
             }]
         }).then(result => {
+            if(result.filePaths.length>0) Fpath = result.filePaths[0];
             fs.readFile(result.filePaths[0], 'utf8', function (err, data) {
                 if (err) {
-                    event.reply('file-return', 'Sorry, opening failed');
+                    event.reply('error', '打开失败');
                 }
                 event.reply('file-return', data);
             })
         })
     })
-    var Fpath = 'new'
+    //保存文件
+    ipcMain.on('file-save', function (event, arg) {
+        if (Fpath != 'new') {
+            fs.writeFile(Fpath, arg, 'utf8', function (err) {
+                if (err) {
+                    event.reply('error', '保存失败');
+                }
+            })
+        } else {
+            dialog.showSaveDialog({
+                multiSelections: false,
+                openDirectory: false,
+                title: '保存文件',
+                filters: [{name: 'Markdown文件', extensions: ['md', 'markdown']}, {
+                    name: 'Markdown格式的文本', extensions: ['txt']
+                }]
+            }).then(r => {
+                if (r.filePath) Fpath = r.filePath;
+                console.log(Fpath);
+                fs.writeFile(Fpath, arg, 'utf8', function (err) {
+                    if (err) {
+                        event.reply('error', '保存失败');
+                    }
+                })
+            })
+        }
+    })
+
+    //保存文件
+    ipcMain.on('init-file-save', function (event, arg) {
+        if (Fpath != 'new') {
+            fs.writeFile(Fpath, arg, 'utf8', function (err) {
+                if (err) {
+                    event.reply('error', '保存失败');
+                }
+            })
+        }
+    })
     if (process.argv[0].indexOf('electron') > -1) {
         if (process.argv.length >= 3) {
             Fpath = process.argv[process.argv.length - 1];
@@ -73,12 +112,11 @@ function createWindow() {
             Fpath = process.argv[process.argv.length - 1];
         }
     }
-    console.log(Fpath)
     ipcMain.on('init-file-open', function (event, arg) {
         if (Fpath !== 'new') {
             fs.readFile(Fpath, 'utf8', function (err, data) {
                 if (err) {
-                    event.reply('file-return', 'Sorry, opening failed');
+                    event.reply('error', '打开失败');
                 }
                 event.reply('file-return', data);
             })
