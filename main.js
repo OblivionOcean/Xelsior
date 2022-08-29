@@ -1,6 +1,35 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs');
 const path = require('path')
+//electron-packager <sourcedir> <appname> --platform=<platform> --arch=<arch> --out=out --icon=assets/app.ico --asar --overwrite --ignore=.git
+const exec = require('child_process').exec
+function writeRegedit(cmdstr){
+    console.log("cmd " + cmdstr)
+    exec(cmdstr, {encoding: "gbk"},function (err, stdout, stderr) {
+
+        if (err) {
+            console.log("cmd errror"  + stderr)
+        }
+        console.log("cmd success" )
+    })
+}
+
+if(process.platform == 'win32'){
+    try{
+        let exePath = __dirname+'NewPad.exe';//获取exe路径 如 this.remote.process.argv[0]
+        let eName = "newpad.t";
+        let icoPath ="md.ico";//logo路径
+
+        writeRegedit('REG ADD HKEY_CURRENT_USER\\SOFTWARE\\Classes\\'+eName+'\\shell\\open\\command /t REG_SZ /d "\\"'+exePath+'\\" \\"%1\\"" /f');
+        writeRegedit('REG ADD HKEY_CURRENT_USER\\SOFTWARE\\Classes\\'+eName+'\\DefaultIcon /t REG_SZ /d "\\"'+icoPath+'\\" " /f');//logo路径
+
+        writeRegedit('REG ADD HKEY_CURRENT_USER\\Software\\Classes\\.md /t REG_SZ /d "'+eName +'" /f');
+        writeRegedit('REG ADD HKEY_CURRENT_USER\\Software\\Classes\\.markdown /t REG_SZ /d "'+eName +'" /f');
+    }
+    catch(e){
+        console.log("HKEY_CURRENT_USER Applications  error")
+    }
+}
 
 function createWindow() {
     const mainWindow = new BrowserWindow({

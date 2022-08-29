@@ -4,11 +4,12 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "packager": "electron-packager . NewPad --platform=win32 --out=out --icon=logo.ico --asar --overwrite&electron-packager . NewPad --platform=darwin --out=out --icon=logo.ico --asar --overwrite&electron-packager . NewPad --platform=linux --out=out --icon=logo.ico --asar --overwrite"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
+    "electron",
     "quick",
     "start",
     "tutorial",
@@ -18,5 +19,8 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^20.0.3"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
   }
 }
