@@ -10,4 +10,4 @@
 
 ## 开箱即用
 
-请等待第一次 Release.
+[Release下载](https://github.com/OblivionOcean/NewPad/releases)
