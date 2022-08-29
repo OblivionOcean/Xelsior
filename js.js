@@ -308,4 +308,15 @@ function min() {
 function winclose() {
         //发送关闭命令
         ipcRenderer.send('window-close');
-    }
+}
+function openmd() {
+    //打开文件
+    ipcRenderer.send('file-open');
+}
+
+ipcRenderer.send('init-file-open');
+
+ipcRenderer.on('file-return', function (event, arg) {
+    document.getElementsByClassName("md-input")[0].value=arg;
+    onMarkdown(document.getElementsByClassName("md-input")[0]);
+})
