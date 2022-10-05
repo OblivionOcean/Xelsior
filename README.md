@@ -11,3 +11,7 @@
 ## 开箱即用
 
 [Release下载](https://github.com/OblivionOcean/NewPad/releases)
+
+## 鸣谢
+[lute](https://github.com/88250/lute)
+[highlight.js](https://github.com/highlightjs/highlight.js)
