@@ -1,21 +1,24 @@
 {
   "name": "NewPad",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "An OblivionOcean Software, Bro.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "packager": "electron-packager . NewPad --platform=win32 --out=out --icon=logo.ico --asar --overwrite&electron-packager . NewPad --platform=darwin --out=out --icon=logo.ico --asar --overwrite&electron-packager . NewPad --platform=linux --out=out --icon=logo.ico --asar --overwrite"
+    "packager": "electron-packager . NewPad --platform=win32 --out=out --icon=logo.ico --asar --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/&electron-packager . NewPad --platform=darwin --out=out --icon=logo.ico --asar --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/&electron-packager . NewPad --platform=linux --out=out --icon=logo.ico --asar --overwrite --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/"
   },
   "repository": "https://github.com/OblivionOcean/NewPad/",
-  "keywords": ["玄云海","NewPad","OblivionOcean"],
+  "keywords": [
+    "玄云海",
+    "NewPad",
+    "OblivionOcean"
+  ],
   "author": "OblivionOcean",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^20.0.3",
     "electron-builder": "^23.3.3"
   },
   "dependencies": {
-    "child_process": "^1.0.2"
+    "electron": "^22.0.0"
   }
 }

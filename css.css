@@ -1,6 +1,7 @@
 :root {
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
+    transition: width .5s, height .5s;
 }
 
 ::-webkit-scrollbar {
@@ -25,46 +26,65 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
+    background-color: #0000;
     -webkit-app-region: drag;
 }
 
 .body {
     -webkit-app-region: drag;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
     border-radius: 10px;
-    background-color: #fff;
+    background-color: rgba(242, 242, 245, 0.95);
+    backdrop-filter: blur(4px);
     border: 0.1px solid #000;
+    overflow:hidden
 }
 
 .header {
     -webkit-app-region: no-drag;
     position: absolute;
-    top: 1px;
-    right: 2px;
+    top: 0;
+    right: 0;
     height: 30px;
-    border-top-right-radius: 10px;
     display: flex;
+    z-index: 9999999999999999;
 }
 
-#close, #max, #min {
+#save, #open, #close, #max, #min {
     display: block;
     padding: 5px 15px;
-    background: #fff;
+    background: #fff0;
     height: 20px;
+    transition: background-color .3s;
 }
 
-#close:hover, #max:hover, #min:hover {
+#max:hover, #min:hover, #save:hover, #open:hover {
     background: rgba(180, 180, 180, 0.68);
 }
 
-#close > svg, #max > svg, #min > svg {
-    height: 20px;
-    width: 20px;
+#close:hover {
+    background-color: #e81123;
+}
+
+#close {
+    border-top-right-radius: 10px;
+}
+
+#close:hover > svg {
+    filter: invert(100%);
+}
+
+#close > svg, #max > svg, #min > svg, #save > svg, #open > svg {
+    height: 15px;
+    width: 15px;
+    margin-top: -5px;
+    transition: filter .3s;
 }
 
 #main {
-    width: 100%;
+    width: calc(100% - 80px) /*calc(100% - 300px)*/;
+    margin-left: 10px;
     height: 100%;
 }
 
@@ -75,9 +95,7 @@ body {
 
 .md-pre {
     display: flex;
-    height: calc(100% - 30px);
-    top: 30px;
-    position: relative;
+    height: calc(100% - 2px);
 }
 
 .md-input, .md-output {
@@ -90,23 +108,22 @@ body {
     overflow-x: auto;
     margin: 0;
     padding: 10px;
-    padding-top: 50px !important;
-    height: calc(100% - 62px);
     max-width: 100%;
     border: 1px solid #ccc;
     width: 50%;
     white-space: pre-wrap;
     word-wrap: break-word;
     resize: none;
+    height: 100%;
 }
 
 .md-output {
-    border-bottom-right-radius: 10px;
     background-color: #fafafa !important;
 }
 
 .md-input {
     border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .vditor-task {
@@ -123,15 +140,13 @@ code {
     background-color: white;
     position: fixed;
     width: auto;
-    height: 40px;
-    top: 30px;
-    left: 50%;
+    height: 30px;
+    top: 3px;
+    left: 80px  /*300px*/;
     padding: 2px 3px;
-    transform: translate(-50%, 0);
-    z-index: 9999999999999999;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 3px 32px 0 rgba(31, 38, 135, 0.2);
+    z-index: 999999999;
+    border-radius: 5px;
+    box-shadow: 0 0px 32px 0 rgb(31 38 135 / 20%);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -141,16 +156,16 @@ code {
     background-color: white;
     border: 2px solid #f6f6f6;
     border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    padding: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
     margin: 0 2px !important;
 }
 
 .md-header > .button > svg, .md-h > .button > svg {
-    width: 25px;
-    height: 25px;
-    margin: 0;
+    width: 20px;
+    height: 20px;
+    margin: auto;
 }
 
 .md-header > .button > svg > path, .md-h > .button > svg > path {
@@ -162,7 +177,7 @@ code {
 }
 
 .md-h {
-    top: 85px;
+    top: 45px;
     border-radius: 5px;
 }
 
@@ -175,34 +190,62 @@ hr {
 em-emoji-picker {
     display: flex;
     position: fixed;
-    top: 85px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    top: 45px;
+    left: 30%;
     z-index: 9999999999999999;
 }
 
-.function {
-    -webkit-app-region: no-drag;
+strong {
+    font-weight: bold;
+}
+
+#nav_light {
     position: absolute;
-    top: 1px;
-    left: 2px;
-    height: 30px;
-    border-top-right-radius: 10px;
-    display: flex;
+    left: 10px;
+    background-color: #0268c0;
+    width: 5px;
+    height: 40px;
+    top: 23px;
+    border-radius: 30px;
+    transition: top .5s
 }
 
-#save, #open {
-    display: block;
-    padding: 5px 15px;
-    background: #fff;
-    height: 20px;
+.left-nav {
+    width: 70px;
+    margin-top: -37px;
+    margin-left: 3px;
+    -webkit-app-region: no-drag;
 }
 
-#save:hover, #open:hover {
-    background: rgba(180, 180, 180, 0.68);
+.nav-btn {
+    background: #fff0;
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 8px;
 }
 
-#save > svg, #open > svg {
-    height: 20px;
-    width: 20px;
+.nav-btn>i{
+    font-size: 30px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -80%);
+    color: #697070;
+}
+
+.nav-btn>p{
+    margin: 0;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -80%);
+    color: #697070;
+}
+.can-hover.nav-btn:hover>i,.can-hover.nav-btn:hover>p{
+    color: #000 !important;
+}
+.can-hover.nav-btn:hover{
+    background: rgba(190, 190, 190, 0.51) !important;
 }
