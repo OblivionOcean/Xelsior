@@ -2,7 +2,7 @@
 
 ## 设计目标
 
-我们打算将NewPad设计为利用Electron技术制作的高颜值、易上手的满足WYSIWYG设计理念的开源Markdown编辑器。NewPad将会作为一个离线编辑器，不会依赖互联网或者任何云端功能，我们也不会也不希望将云端功能集成入NewPad。在Typora收费发生之后，我们希望可以有一个更加方便，轻松，便于使用的WYSIWYG的Markdown编辑器。
+我们打算将NewPad设计为利用Electron技术制作的高颜值、易上手的满足WYSIWYG设计理念的开源Markdown编辑器。在Typora收费事件发生之后，我们希望可以有一个更加方便，轻松，便于使用的WYSIWYG的Markdown编辑器。
 
 ## 设计理念
 
