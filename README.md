@@ -1,12 +1,22 @@
-# NewPad: 一款致力于打造舒适体验的Markdown编辑器
+# Xelsior: 一款致力于打造舒适体验的Markdown编辑器
 
 ## 设计目标
 
-我们打算将NewPad设计为利用Electron技术制作的高颜值、易上手的满足WYSIWYG设计理念的开源Markdown编辑器。在Typora收费事件发生之后，我们希望可以有一个更加方便，轻松，便于使用的WYSIWYG的Markdown编辑器。
+Xelsior将被设计为一款高颜值、易上手、可定制的开源Markdown编辑器。
 
 ## 设计理念
 
-简洁，绿色，便利，高效。为了高效，我们可能会在后期将它集成加入一些可能会需要的实用功能，比如一键将Markdown转PDF/Word/HTML，或者集成Hexo功能自动在写完之后发表。正如它的名字一样，它将会是一个简易而不简陋的编辑器，NewPad致力于打造一个不需要更新、不需要安装即可使用的编辑器，你可以选择永远不更新这个编辑器，我们想要的只有给用户一个完整的Markdown编辑环境。
+顾名思义，精益求精 (Xelsior 同音 Excelsior)。
+
+## 功能清单
+
+- [x] 基本基于 Markdown 的编辑，语法高亮，保存、另存为、打开等基本功能
+- [x] 即时渲染 + 预览 (尚可优化)
+- [ ] 禅意模式 (参考 MarkText / Typora)
+- [ ] 自定义主题 / 插件
+- [ ] 一键发布 Pages
+- [ ] 转换 HTML / Markdown / Word / PDF
+- [ ] 使用 Webview (取代 Electron)
 
 ## 开箱即用
 
