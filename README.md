@@ -1,4 +1,4 @@
-# Xelsior: 一款致力于打造舒适体验的Markdown编辑器
+![Xelsior项目头图](https://github.com/OblivionOcean/Xelsior/assets/92655031/de2d31e3-8218-4a22-b10a-c38ea71e70e5)
 
 ## 设计目标
 
