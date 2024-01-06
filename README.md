@@ -20,7 +20,7 @@ Xelsior将被设计为一款高颜值、易上手、可定制的开源Markdown�
 
 ## 开箱即用
 
-[Release下载](https://github.com/OblivionOcean/NewPad/releases)
+[Release下载](https://github.com/OblivionOcean/Xelsior/releases)
 
 ## 鸣谢
 [lute](https://github.com/88250/lute)
