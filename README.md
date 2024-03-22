@@ -19,7 +19,6 @@ Xelsior 将被设计为一款高颜值、易上手、可定制的开源 Markdown
 - [ ] 使用 Webview (取代 Electron)
 
 ## 开箱即用
-
 [Release Page 下载页](https://github.com/OblivionOcean/NewPad/releases)
 
 ## 鸣谢
