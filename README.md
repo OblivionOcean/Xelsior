@@ -1,8 +1,8 @@
-![Xelsior项目头图](https://github.com/OblivionOcean/Xelsior/assets/92655031/de2d31e3-8218-4a22-b10a-c38ea71e70e5)
+![Xelsior](https://github.com/OblivionOcean/Xelsior/assets/92655031/de2d31e3-8218-4a22-b10a-c38ea71e70e5)
 
 ## 设计目标
 
-Xelsior将被设计为一款高颜值、易上手、可定制的开源Markdown编辑器。
+Xelsior 将被设计为一款高颜值、易上手、可定制的开源 Markdown 编辑器。
 
 ## 设计理念
 
@@ -19,10 +19,8 @@ Xelsior将被设计为一款高颜值、易上手、可定制的开源Markdown�
 - [ ] 使用 Webview (取代 Electron)
 
 ## 开箱即用
-
-[Release下载](https://github.com/OblivionOcean/Xelsior/releases)
+[Release Page 下载页](https://github.com/OblivionOcean/NewPad/releases)
 
 ## 鸣谢
-[lute](https://github.com/88250/lute)
-
-[highlight.js](https://github.com/highlightjs/highlight.js)
+- [lute](https://github.com/88250/lute)
+- [highlight.js](https://github.com/highlightjs/highlight.js)
