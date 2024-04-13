@@ -1,26 +1,24 @@
 ![Xelsior](https://github.com/OblivionOcean/Xelsior/assets/92655031/de2d31e3-8218-4a22-b10a-c38ea71e70e5)
 
-## 设计目标
+[简体中文](https://github.com/OblivionOcean/Xelsior/blob/main/README.cn.md)
 
-Xelsior 将被设计为一款高颜值、易上手、可定制的开源 Markdown 编辑器。
+## Goals
 
-## 设计理念
+Xelsior (Pronounced just like Excelsior) will be designed as a simple, easy-to-use, customizable open source Markdown editor.
 
-顾名思义，精益求精 (Xelsior 同音 Excelsior)。
+## Features
 
-## 功能清单
+- [x] Basic Markdown
+- [x] Real-time Rendering & Editing
+- [ ] Zen Mode (Like MarkText and Typora)
+- [ ] Customized CSS
+- [ ] Hexo Integration
+- [ ] Convert into HTML / Markdown / Word / PDF
+- [ ] Use Webview (Instead of Electron)
 
-- [x] 基本基于 Markdown 的编辑，语法高亮，保存、另存为、打开等基本功能
-- [x] 即时渲染 + 预览 (尚可优化)
-- [ ] 禅意模式 (参考 MarkText / Typora)
-- [ ] 自定义主题 / 插件
-- [ ] 一键发布 Pages
-- [ ] 转换 HTML / Markdown / Word / PDF
-- [ ] 使用 Webview (取代 Electron)
+## Release
+[Release Page](https://github.com/OblivionOcean/Xelsior/releases)
 
-## 开箱即用
-[Release Page 下载页](https://github.com/OblivionOcean/NewPad/releases)
-
-## 鸣谢
+## Special Thanks
 - [lute](https://github.com/88250/lute)
 - [highlight.js](https://github.com/highlightjs/highlight.js)
