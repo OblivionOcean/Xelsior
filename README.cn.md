@@ -1,5 +1,7 @@
 ![Xelsior](https://github.com/OblivionOcean/Xelsior/assets/92655031/de2d31e3-8218-4a22-b10a-c38ea71e70e5)
 
+[English](https://github.com/OblivionOcean/Xelsior/blob/main/README.md)
+
 ## 设计目标
 
 Xelsior 将被设计为一款高颜值、易上手、可定制的开源 Markdown 编辑器。
