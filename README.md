@@ -4,11 +4,11 @@
 
 ## Goals
 
-Xelsior (Pronounced just like Excelsior) will be designed as a simple, easy-to-use, customizable open source Markdown editor.
+Xelsior (Pronounced like Excelsior) will be designed as a simple, easy-to-use, customizable open-source Markdown editor.
 
 ## Features
 
-- [x] Basic Markdown
+- [x] Basic Markdown Syntax.
 - [x] Real-time Rendering & Editing
 - [ ] Zen Mode (Like MarkText and Typora)
 - [ ] Customized CSS
